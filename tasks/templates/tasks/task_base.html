@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="task-page">
+        <div class="container">
+            <div class="row">
+                {% block pretask %}{% endblock %}
+                {% block task_content %}{% endblock %}
+                {% block post_task %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

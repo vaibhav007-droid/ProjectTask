@@ -1,0 +1,39 @@
+{% extends "tasks/task_base.html" %}
+{% block pre_task_content %}
+    <div class="col-md-4">
+        {% if user.is_authenticated %}
+            <div class="card card-with-shadow">
+                <div class="content">
+                    <h5 class="title">Your Projects</h5>
+                    <ul class="list-unstyled">
+                        {% for member_proj in get_user_task %}
+                            <li class="project li-with-bullet">
+                                <a href="{% url 'project:single' slug=member_proj.project.slug %}"></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <div class="card card-with-shadow">
+            <div class="content">
+                <h5 class="title">All Projects</h5>
+                <ul class="list-unstyled">
+                    {% for other_project in get_other_project %}
+                        <li class="project li-with-bullet">
+                            <a href="{% url 'project:single' slug=other_project.slug %}"></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block task_content %}
+    <div class="col-md-8">
+        {% for task in task_list %}
+            {% include "tasks/_task.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}

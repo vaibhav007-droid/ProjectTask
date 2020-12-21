@@ -1,0 +1,14 @@
+{% extends "tasks/task_base.html" %}
+{% block pretask %}
+    <div class="col-md-4">
+        <h1>@{{ task_user.username }}</h1>
+    </div>
+{% endblock %}
+
+{% block task_content %}
+    <div class="col-md-8">
+        {% for task in task_list %}
+            {% include "tasks/_task.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}

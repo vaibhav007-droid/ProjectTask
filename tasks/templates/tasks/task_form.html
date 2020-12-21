@@ -1,0 +1,10 @@
+{% extends "tasks/task_base.html" %}
+{% load bootstrap3 %}
+{% block task_content %}
+    <h4>Create New Task</h4>
+    <form id="taskForm" action="{% url 'task:create' %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-primary btn-large" value="Create">
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% block preproj %}{% endblock %}
+            {% block proj_content %}{% endblock %}
+            {% block postproj %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<div class="task media">
+    <h3>{{ task.description_html|safe }}</h3>
+    <div class="media-body">
+        <h5 class="media-heading">
+            <span class="username">
+                <a href="{% url 'task:for_user' username=task.user.username %}">@{{ task.user.username }}</a>
+            </span>
+            <time class="time">
+                <a href="{% url 'task:single' username=task.user.username pk=task.pk %}">{{ task.created_at }}</a>
+            </time>
+            {% if task.project %}
+                <span class="group-name">in <a href="#">{{ task.project.name }}</a></span>
+            {% endif %}
+        </h5>
+        <div class="media-footer">
+            {% if user.is_authenticated and task.user == user and not hide_delete %}
+                <a href="{% url 'task:delete' pk=task.pk %}" title="delete" class="btn btn-simple">
+                    <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+                    <span class="text-danger icon-label">Delete</span>
+                </a>
+                <a href="{% url 'task:update' pk=task.pk %}" title="update" class="btn btn-simple">
+                    <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+                    <span class="text-danger icon-label">Update</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
